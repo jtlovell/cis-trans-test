@@ -4,7 +4,7 @@
 #dis<-numeric indicator of dispersion around mean
 #xbar<-intercept
 
-test<-sim.ct(wts=c(-1,1,-1,0,0,0,0), nind=80, type="normal")
+
 
 sim.ct<-function(xbar=5, nind=80, sd.sim=.4, 
                  factors=list(allele=c("hal","fil"),generation=c("F0","F1"),treatment=c("wet","dry")),
@@ -76,3 +76,19 @@ sim.ct<-function(xbar=5, nind=80, sd.sim=.4,
   }
   return(glm.out)
 }
+#cis effect only
+test<-sim.ct(wts=c(2,0,0,0,0,0,0), nind=80, type="normal")
+#cis and trans.f effect
+test<-sim.ct(wts=c(2,2,0,0,0,0,0), nind=80, type="normal")
+#cis and trans.h effect
+test<-sim.ct(wts=c(2,0,2,0,0,0,0), nind=80, type="normal")
+#cis and cis*trt int
+test<-sim.ct(wts=c(1,0,0,0,2,0,0), nind=80, type="normal")
+#trans.f only
+test<-sim.ct(wts=c(0,2,0,0,0,0,0), nind=80, type="normal")
+#trans.h only
+test<-sim.ct(wts=c(0,0,2,0,0,0,0), nind=80, type="normal")
+#both trans, no cis
+test<-sim.ct(wts=c(0,2,2,0,0,0,0), nind=80, type="normal")
+#trade off
+test<-sim.ct(wts=c(-1,1,-1,0,0,0,0), nind=80, type="normal")
